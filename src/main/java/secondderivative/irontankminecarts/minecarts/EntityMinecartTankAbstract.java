@@ -10,7 +10,6 @@ import com.indemnity83.irontank.reference.TankType;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import mods.railcraft.common.carts.EntityCartTank;
 import mods.railcraft.common.core.RailcraftConfig;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,24 +33,24 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
 
     static {
         try {
-            Class<?> clss = EntityMinecartTankAbstract.class;
-            String name = clss.getCanonicalName();
+            String name = EntityMinecartTankAbstract.class.getCanonicalName();
             name = name.substring(0, name.lastIndexOf('.'));
-            for (ClassInfo clazzInfo : ClassPath.from(clss.getClassLoader()).getTopLevelClasses(name + "." + "types")) {
-                Class<? extends Entity> clazz = (Class<? extends Entity>) clazzInfo.load();
-                if (clss.isAssignableFrom(clazz)) {
-                    TankType type = ((EntityMinecartTankAbstract) clazz.getConstructor(World.class)
+            for (ClassInfo clazzInfo : ClassPath.from(EntityMinecartTankAbstract.class.getClassLoader()).getTopLevelClasses(name + "." + "types")) {
+                Class<?> clazz = clazzInfo.load();
+                if (EntityMinecartTankAbstract.class.isAssignableFrom(clazz)) {
+                    Class<? extends EntityMinecartTankAbstract> cartClass = (Class<? extends EntityMinecartTankAbstract>) clazz;
+                    TankType type = ((EntityMinecartTankAbstract) cartClass.getConstructor(World.class)
                             .newInstance((World) null)).type();
                     String rawname = IronTankMinecarts.tankTypeName(type);
                     EntityRegistry.registerModEntity(
-                            clazz,
+                            cartClass,
                             "minecart_tank_" + rawname,
                             type.ordinal(),
                             IronTankMinecarts.instance,
                             80,
                             3,
                             true);
-                    map.put(type, (Class<? extends EntityMinecartTankAbstract>) clazz);
+                    map.put(type, cartClass);
                 }
             }
         } catch (Exception e) {

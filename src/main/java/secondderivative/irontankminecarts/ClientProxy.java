@@ -7,6 +7,7 @@ import mods.railcraft.client.render.models.ModelSimpleCube;
 import mods.railcraft.client.render.models.ModelTextured;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
+import secondderivative.irontankminecarts.minecarts.EntityMinecartTankAbstract;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartCopperTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartDiamondTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartGoldTank;
@@ -32,7 +33,7 @@ public class ClientProxy extends CommonProxy {
         addMinecartClassModel(EntityMinecartStainlessSteelTank.class, "stainlesssteel");
     };
 
-    private void addMinecartClassModel(Class cart, String textureName) {
+    private <T extends EntityMinecartTankAbstract> void addMinecartClassModel(Class<T> cart, String textureName) {
         ModelTextured tank = new ModelSimpleCube();
         tank.setTexture(CARTS_FOLDER + textureName + ".png");
         tank.doBackFaceCulling(false);
