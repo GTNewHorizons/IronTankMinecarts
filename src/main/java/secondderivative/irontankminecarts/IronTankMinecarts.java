@@ -1,6 +1,8 @@
 package secondderivative.irontankminecarts;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +10,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.indemnity83.irontank.reference.Reference;
 import com.indemnity83.irontank.reference.TankType;
 
 import cpw.mods.fml.common.Mod;
@@ -47,6 +50,15 @@ public class IronTankMinecarts {
                 .setTextureName(MODID + ":minecart_tank_" + name);
             GameRegistry.registerItem(minecart, "minecart_tank_" + name);
             carts.put(type, minecart);
+
+            GameRegistry.addShapedRecipe(
+                new ItemStack(minecart),
+                "T",
+                "M",
+                'M',
+                new ItemStack(Items.minecart),
+                'T',
+                GameRegistry.findBlock(Reference.MODID, type.name));
         }
     }
     @Mod.EventHandler
