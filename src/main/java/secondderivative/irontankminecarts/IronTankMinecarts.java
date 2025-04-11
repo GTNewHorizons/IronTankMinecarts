@@ -40,7 +40,7 @@ public class IronTankMinecarts {
 
     public static Map<TankType, Item> carts = new HashMap<TankType, Item>();
 
-    @SidedProxy(clientSide = "secondderivative.irontankminecarts.ClientProxy")
+    @SidedProxy(clientSide = "secondderivative.irontankminecarts.ClientProxy", serverSide = "secondderivative.irontankminecarts.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
