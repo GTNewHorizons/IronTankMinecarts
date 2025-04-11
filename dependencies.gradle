@@ -1,8 +1,8 @@
 dependencies {
     api("com.github.GTNewHorizons:Irontanks:1.4.0:dev")
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.31-GTNH:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.38-GTNH:dev")
 
-    implementation("com.github.GTNewHorizons:Railcraft:v0.1.0-carttest-iron-tank-cart-compat.1+d0c2486061-dirty") {
+    implementation("com.github.GTNewHorizons:Railcraft:9.16.13") {
         transitive = false
     }
 }
