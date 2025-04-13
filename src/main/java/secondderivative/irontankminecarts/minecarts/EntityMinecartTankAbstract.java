@@ -20,7 +20,7 @@ import secondderivative.irontankminecarts.IronTankMinecarts;
 
 public abstract class EntityMinecartTankAbstract extends EntityCartTank {
 
-    private static final Map<TankType, Class<? extends EntityMinecartTankAbstract>> map = new HashMap<TankType, Class<? extends EntityMinecartTankAbstract>>();
+    public static final Map<TankType, Class<? extends EntityMinecartTankAbstract>> map = new HashMap<TankType, Class<? extends EntityMinecartTankAbstract>>();
 
     public EntityMinecartTankAbstract(World world, TankType type) {
         super(world);
@@ -46,7 +46,7 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
                 if (EntityMinecartTankAbstract.class.isAssignableFrom(clazz)) {
                     Class<? extends EntityMinecartTankAbstract> cartClass = (Class<? extends EntityMinecartTankAbstract>) clazz;
                     TankType type = ((EntityMinecartTankAbstract) cartClass.getConstructor(World.class)
-                        .newInstance((World) null)).type();
+                        .newInstance((World) null)).tankType();
                     String rawname = IronTankMinecarts.tankTypeName(type);
                     EntityRegistry.registerModEntity(
                         cartClass,
@@ -65,7 +65,7 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
     }
 
     public ItemStack getCartItem() {
-        Item minecart = IronTankMinecarts.carts.get(type());
+        Item minecart = IronTankMinecarts.carts.get(tankType());
         return new ItemStack(minecart != null ? minecart : Items.minecart);
     }
 
@@ -78,6 +78,4 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
             throw new RuntimeException(e);
         }
     }
-
-    public abstract TankType type();
 }

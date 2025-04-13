@@ -19,7 +19,7 @@ public class EntityMinecartTitaniumTank extends EntityMinecartTankAbstract {
     }
 
     @Override
-    public TankType type() {
+    public TankType tankType() {
         return type;
     }
 
