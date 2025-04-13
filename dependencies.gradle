@@ -2,7 +2,7 @@ dependencies {
     api("com.github.GTNewHorizons:Irontanks:1.4.0:dev")
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.38-GTNH:dev")
 
-    implementation("com.github.GTNewHorizons:Railcraft:9.16.13") {
+    implementation("com.github.GTNewHorizons:Railcraft:9.16.15") {
         transitive = false
     }
 }
