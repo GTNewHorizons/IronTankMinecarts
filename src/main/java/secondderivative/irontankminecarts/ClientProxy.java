@@ -9,6 +9,7 @@ import mods.railcraft.client.render.carts.RenderCartItemFiltered;
 import mods.railcraft.client.render.models.ModelSimpleCube;
 import mods.railcraft.client.render.models.ModelTextured;
 import secondderivative.irontankminecarts.minecarts.EntityMinecartTankAbstract;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartAluminiumTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartCopperTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartDiamondTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartGoldTank;
@@ -30,6 +31,7 @@ public class ClientProxy extends CommonProxy {
         addMinecartClassModel(EntityMinecartCopperTank.class, "copper");
         addMinecartClassModel(EntityMinecartIronTank.class, "iron");
         addMinecartClassModel(EntityMinecartGoldTank.class, "gold");
+        addMinecartClassModel(EntityMinecartAluminiumTank.class, "aluminium");
         addMinecartClassModel(EntityMinecartDiamondTank.class, "diamond");
         addMinecartClassModel(EntityMinecartTitaniumTank.class, "titanium");
         addMinecartClassModel(EntityMinecartTungstensteelTank.class, "tungstensteel");
