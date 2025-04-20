@@ -46,7 +46,7 @@ public class IronTankMinecarts {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         for (TankType type : TankType.values()) {
-            if (type == TankType.GLASS || type == TankType.OBSIDIAN) {
+            if (type == TankType.GLASS) {
                 continue;
             }
             String name = tankTypeName(type);

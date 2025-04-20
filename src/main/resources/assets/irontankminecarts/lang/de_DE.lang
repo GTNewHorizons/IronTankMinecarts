@@ -1,6 +1,7 @@
 item.irontankminecarts.minecart_tank_iron.name=Eisentankwaggon
 item.irontankminecarts.minecart_tank_gold.name=Goldtankwaggon
 item.irontankminecarts.minecart_tank_diamond.name=Diamanttankwaggon
+item.irontankminecarts.minecart_tank_obsidian.name=Obsidiantankwaggon
 item.irontankminecarts.minecart_tank_copper.name=Kupfertankwaggon
 item.irontankminecarts.minecart_tank_steel.name=Stahltankwaggon
 item.irontankminecarts.minecart_tank_aluminium.name=Aluminiumtankwaggon
@@ -11,6 +12,7 @@ item.irontankminecarts.minecart_tank_tungstensteel.name=Wolframstahltankwaggon
 entity.irontankminecarts.minecart_tank_iron.name=Eisentankwaggon
 entity.irontankminecarts.minecart_tank_gold.name=Goldtankwaggon
 entity.irontankminecarts.minecart_tank_diamond.name=Diamanttankwaggon
+entity.irontankminecarts.minecart_tank_obsidian.name=Obsidiantankwaggon
 entity.irontankminecarts.minecart_tank_copper.name=Kupfertankwaggon
 entity.irontankminecarts.minecart_tank_steel.name=Stahltankwaggon
 entity.irontankminecarts.minecart_tank_aluminium.name=Aluminiumtankwaggon

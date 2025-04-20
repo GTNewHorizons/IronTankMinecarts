@@ -14,6 +14,7 @@ import secondderivative.irontankminecarts.minecarts.types.EntityMinecartCopperTa
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartDiamondTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartGoldTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartIronTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartObsidianTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartStainlessSteelTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartSteelTank;
 import secondderivative.irontankminecarts.minecarts.types.EntityMinecartTitaniumTank;
@@ -33,6 +34,7 @@ public class ClientProxy extends CommonProxy {
         addMinecartClassModel(EntityMinecartGoldTank.class, "gold");
         addMinecartClassModel(EntityMinecartAluminiumTank.class, "aluminium");
         addMinecartClassModel(EntityMinecartDiamondTank.class, "diamond");
+        addMinecartClassModel(EntityMinecartObsidianTank.class, "obsidian");
         addMinecartClassModel(EntityMinecartTitaniumTank.class, "titanium");
         addMinecartClassModel(EntityMinecartTungstensteelTank.class, "tungstensteel");
         addMinecartClassModel(EntityMinecartSteelTank.class, "steel");
