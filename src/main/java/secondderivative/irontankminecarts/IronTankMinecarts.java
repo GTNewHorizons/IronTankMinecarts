@@ -25,11 +25,13 @@ import secondderivative.irontankminecarts.minecarts.ItemMinecartIronTank;
     modid = IronTankMinecarts.MODID,
     dependencies = IronTankMinecarts.DEPENDENCIES,
     name = IronTankMinecarts.MOD_NAME,
+    version = IronTankMinecarts.VERSION,
     acceptedMinecraftVersions = "[1.7.10]")
 public class IronTankMinecarts {
 
     public static final String MODID = "irontankminecarts";
     public static final String MOD_NAME = "Iron Tank Minecarts";
+    public static final String VERSION = ITMCTags.VERSION;
     public static final String DEPENDENCIES = "required-after:Forge@[10.10,);required-after:irontank";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
