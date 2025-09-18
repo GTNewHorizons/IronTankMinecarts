@@ -22,7 +22,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import secondderivative.irontankminecarts.minecarts.EntityMinecartTankAbstract;
 import secondderivative.irontankminecarts.minecarts.ItemMinecartIronTank;
 
-@Mod(modid = IronTankMinecarts.MODID, dependencies = IronTankMinecarts.DEPENDENCIES, name = IronTankMinecarts.MOD_NAME, version = IronTankMinecarts.VERSION, acceptedMinecraftVersions = "[1.7.10]")
+@Mod(
+    modid = IronTankMinecarts.MODID,
+    dependencies = IronTankMinecarts.DEPENDENCIES,
+    name = IronTankMinecarts.MOD_NAME,
+    version = IronTankMinecarts.VERSION,
+    acceptedMinecraftVersions = "[1.7.10]")
 public class IronTankMinecarts {
 
     public static final String MODID = "irontankminecarts";
@@ -36,7 +41,9 @@ public class IronTankMinecarts {
 
     public static Map<TankType, Item> carts = new HashMap<TankType, Item>();
 
-    @SidedProxy(clientSide = "secondderivative.irontankminecarts.ClientProxy", serverSide = "secondderivative.irontankminecarts.ServerProxy")
+    @SidedProxy(
+        clientSide = "secondderivative.irontankminecarts.ClientProxy",
+        serverSide = "secondderivative.irontankminecarts.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
@@ -47,18 +54,18 @@ public class IronTankMinecarts {
             }
             String name = tankTypeName(type);
             Item minecart = new ItemMinecartIronTank(type).setUnlocalizedName(MODID + ".minecart_tank_" + name)
-                    .setTextureName(MODID + ":minecart_tank_" + name);
+                .setTextureName(MODID + ":minecart_tank_" + name);
             GameRegistry.registerItem(minecart, "minecart_tank_" + name);
             carts.put(type, minecart);
 
             GameRegistry.addShapedRecipe(
-                    new ItemStack(minecart),
-                    "T",
-                    "M",
-                    'M',
-                    new ItemStack(Items.minecart),
-                    'T',
-                    GameRegistry.findBlock(Reference.MODID, type.name));
+                new ItemStack(minecart),
+                "T",
+                "M",
+                'M',
+                new ItemStack(Items.minecart),
+                'T',
+                GameRegistry.findBlock(Reference.MODID, type.name));
         }
         EntityMinecartTankAbstract.init();
     }
@@ -73,7 +80,7 @@ public class IronTankMinecarts {
             case EMERALD -> "aluminium";
             case SILVER -> "steel";
             default -> type.name()
-                    .toLowerCase();
+                .toLowerCase();
         };
     }
 }

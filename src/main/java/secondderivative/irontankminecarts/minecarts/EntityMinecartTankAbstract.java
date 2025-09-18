@@ -32,8 +32,8 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
 
     public static int getCapacity(TankType type) {
         return RailcraftConfig.getTankCartCapacity() / (FluidContainerRegistry.BUCKET_VOLUME * 16)
-                * 1000
-                * type.capacity;
+            * 1000
+            * type.capacity;
     }
 
     static {
@@ -41,21 +41,21 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
             String name = EntityMinecartTankAbstract.class.getCanonicalName();
             name = name.substring(0, name.lastIndexOf('.'));
             for (ClassInfo clazzInfo : ClassPath.from(EntityMinecartTankAbstract.class.getClassLoader())
-                    .getTopLevelClasses(name + "." + "types")) {
+                .getTopLevelClasses(name + "." + "types")) {
                 Class<?> clazz = clazzInfo.load();
                 if (EntityMinecartTankAbstract.class.isAssignableFrom(clazz)) {
                     Class<? extends EntityMinecartTankAbstract> cartClass = (Class<? extends EntityMinecartTankAbstract>) clazz;
                     TankType type = ((EntityMinecartTankAbstract) cartClass.getConstructor(World.class)
-                            .newInstance((World) null)).tankType();
+                        .newInstance((World) null)).tankType();
                     String rawname = IronTankMinecarts.tankTypeName(type);
                     EntityRegistry.registerModEntity(
-                            cartClass,
-                            "minecart_tank_" + rawname,
-                            type.ordinal(),
-                            IronTankMinecarts.instance,
-                            80,
-                            3,
-                            true);
+                        cartClass,
+                        "minecart_tank_" + rawname,
+                        type.ordinal(),
+                        IronTankMinecarts.instance,
+                        80,
+                        3,
+                        true);
                     map.put(type, cartClass);
                 }
             }
@@ -64,8 +64,7 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
         }
     }
 
-    public static void init() {
-    }
+    public static void init() {}
 
     public ItemStack getCartItem() {
         Item minecart = IronTankMinecarts.carts.get(tankType());
@@ -76,7 +75,7 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
         try {
             Class<? extends EntityMinecartTankAbstract> cls = map.get(type);
             return cls.getConstructor(World.class, double.class, double.class, double.class)
-                    .newInstance(world, x, y, z);
+                .newInstance(world, x, y, z);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
