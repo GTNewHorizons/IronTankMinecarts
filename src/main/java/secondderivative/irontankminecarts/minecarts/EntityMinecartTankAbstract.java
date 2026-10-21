@@ -9,14 +9,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 
-import com.google.common.reflect.ClassPath;
-import com.google.common.reflect.ClassPath.ClassInfo;
 import com.indemnity83.irontank.reference.TankType;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
 import mods.railcraft.common.carts.EntityCartTank;
 import mods.railcraft.common.core.RailcraftConfig;
 import secondderivative.irontankminecarts.IronTankMinecarts;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartAluminiumTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartCopperTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartDiamondTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartGoldTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartIronTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartObsidianTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartStainlessSteelTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartSteelTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartTitaniumTank;
+import secondderivative.irontankminecarts.minecarts.types.EntityMinecartTungstensteelTank;
 
 public abstract class EntityMinecartTankAbstract extends EntityCartTank {
 
@@ -38,26 +46,25 @@ public abstract class EntityMinecartTankAbstract extends EntityCartTank {
 
     static {
         try {
-            String name = EntityMinecartTankAbstract.class.getCanonicalName();
-            name = name.substring(0, name.lastIndexOf('.'));
-            for (ClassInfo clazzInfo : ClassPath.from(EntityMinecartTankAbstract.class.getClassLoader())
-                .getTopLevelClasses(name + "." + "types")) {
-                Class<?> clazz = clazzInfo.load();
-                if (EntityMinecartTankAbstract.class.isAssignableFrom(clazz)) {
-                    Class<? extends EntityMinecartTankAbstract> cartClass = (Class<? extends EntityMinecartTankAbstract>) clazz;
-                    TankType type = ((EntityMinecartTankAbstract) cartClass.getConstructor(World.class)
-                        .newInstance((World) null)).tankType();
-                    String rawname = IronTankMinecarts.tankTypeName(type);
-                    EntityRegistry.registerModEntity(
-                        cartClass,
-                        "minecart_tank_" + rawname,
-                        type.ordinal(),
-                        IronTankMinecarts.instance,
-                        80,
-                        3,
-                        true);
-                    map.put(type, cartClass);
-                }
+            Class<?>[] carts = { EntityMinecartAluminiumTank.class, EntityMinecartCopperTank.class,
+                EntityMinecartDiamondTank.class, EntityMinecartGoldTank.class, EntityMinecartIronTank.class,
+                EntityMinecartObsidianTank.class, EntityMinecartStainlessSteelTank.class, EntityMinecartSteelTank.class,
+                EntityMinecartTitaniumTank.class, EntityMinecartTungstensteelTank.class };
+            for (Class<?> clazz : carts) {
+                Class<? extends EntityMinecartTankAbstract> cartClass = (Class<? extends EntityMinecartTankAbstract>) clazz;
+                TankType type = cartClass.getConstructor(World.class)
+                    .newInstance((World) null)
+                    .tankType();
+                String rawname = IronTankMinecarts.tankTypeName(type);
+                EntityRegistry.registerModEntity(
+                    cartClass,
+                    "minecart_tank_" + rawname,
+                    type.ordinal(),
+                    IronTankMinecarts.instance,
+                    80,
+                    3,
+                    true);
+                map.put(type, cartClass);
             }
         } catch (Exception e) {
             e.printStackTrace();
